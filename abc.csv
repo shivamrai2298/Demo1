@@ -7,5 +7,4 @@ a <- temp
 }
 return(a)
 }
-"gcd_r(48, 18) "
-ashsa
+"gcd_r(48, 18)"
