@@ -1,5 +1,10 @@
-Factorial of a number
-n = 6
+# Q2A
+set.seed(42)
+"samples <- rt(100, df = 5)  # Random t-distribution samples with 5 degrees of freedom"
+"t.test(samples, conf.level = 0.95)"
+"t.test(samples, mu = 0, alternative = ""two.sided"", conf.level = 0.99)"
 
-
-
+# Q2B
+n <- 1:10
+g <- floor(n / 2) + floor(n)
+g 
