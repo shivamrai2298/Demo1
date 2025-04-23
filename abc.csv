@@ -1,4 +1,10 @@
-# Q2B
-n <- 1:10
-g <- floor(n / 2) + floor(n)
-g 
+# Q1A
+"gcd_r <- function(a, b) {"
+while (b != 0){
+temp <- b
+b <- a %% b
+a <- temp
+}
+return(a)
+}
+"gcd_r(48, 18)"
