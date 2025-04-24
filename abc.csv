@@ -1,11 +1,1 @@
-# Q1A
-"gcd_r <- function(a, b) {"
-while (b != 0){
-temp <- b
-b <- a %% b
-a <- temp
-}
-return(a)
-}
-"gcd_r(48, 18)"
-"#no """
+Q1. All of the Above
