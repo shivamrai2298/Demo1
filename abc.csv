@@ -1,8 +1,10 @@
 
-which of the following activation function have saturation problem
-e)only A &B
 
 c) ReLU (Rectified Linear Unit)
 
 which of the activation function causes many neurons to never fire(activate)  
+c)reLU
+
+
+which of the activation function have a fixed derivative for values equal to or greater than 0 
 c)reLU
