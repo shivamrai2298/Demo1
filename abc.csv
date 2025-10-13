@@ -15,3 +15,5 @@ How many neurons in the following network do not have a bias?
 b)5
 
 
+if you are using a network for inference would you build a computation graph 
+a) yes 
