@@ -1,5 +1,8 @@
 Q9: 64 × 32
 Q7: B
+Q12: Relu
+Q20: 62
+
 !pip install torch torchvision torchaudio matplotlib numpy --quiet
 
 import torch
