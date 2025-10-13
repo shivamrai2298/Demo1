@@ -9,3 +9,9 @@ opt c) layer2
 
 How many trainable weights are there in the following network?
 a) 67
+
+
+How many neurons in the following network do not have a bias?
+b)5
+
+
