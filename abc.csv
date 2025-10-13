@@ -1,3 +1,28 @@
+Deep learning is a subset of machine learning
+a) True
+
+An epoch consists of which of the following steps
+d) All of the above
+
+Keras can be used with which of the following framework
+a) TensorFlow
+
+Which of the activation function have saturation problem
+e) Only A & B
+
+Which of the activation function are most commonly used in hidden layers of deep neural networks
+c) ReLU
+
+Which of the activation function causes many neurons to never fire (activate)
+c) ReLU
+
+Which of the activation function have a fixed derivative for values equal to or greater than 0
+e) Both C & D
+
+If you are using a network for inference would you build a computation graph
+a) Yes
+
+
 which of the activation function have a fixed derivative for values equal to or greater than 0 
 c)reLU
 
@@ -19,3 +44,4 @@ a) yes
 
 How many trainable parameters are there in the following neural network?
 d)62
+
