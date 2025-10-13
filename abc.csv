@@ -1,10 +1,7 @@
 
 
-c) ReLU (Rectified Linear Unit)
-
-which of the activation function causes many neurons to never fire(activate)  
-c)reLU
-
-
 which of the activation function have a fixed derivative for values equal to or greater than 0 
 c)reLU
+
+While training the following neural network, the weights of which layer will be updated first by backprop? 
+opt c) layer2
