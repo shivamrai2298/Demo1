@@ -5,3 +5,7 @@ c)reLU
 
 While training the following neural network, the weights of which layer will be updated first by backprop? 
 opt c) layer2
+
+
+How many trainable weights are there in the following network?
+a) 67
