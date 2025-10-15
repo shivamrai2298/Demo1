@@ -17,6 +17,14 @@ Wq​=0.0714×18.25​ / 2(1−0.2856)
   ​=0.911 minutes
 W=Wq​+E[S]=0.911+4=4.911 minutes
 
+(3) Proportion of customers getting coffee within 8 minutes
+μ=4, σ=1.5
+
+P(X<8)=P(Z<(8−4​)/1.5)
+=P(Z<2.67)
+
+P(Z<2.67)≈0.9963
+
 
 
 
