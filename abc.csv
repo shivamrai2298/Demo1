@@ -1,40 +1,30 @@
-First one is not a code write those as answers. only 42 lines.
+f(x)=ln(x+2)−x2=0
+ln(x+2)=x2
+x+2=e^(x^2)
+e^(x^2)−x−2=0
 
 
-Question 3
-Part B
-Q3)
-import numpy as np
-import matplotlib.pyplot as plt
+f(x)=ln(x+2)−x2
 
-n = 10000
-X = np.random.uniform(0, 1, n)
-Y = X**2
+if x=0
+ln(2)−0=0.693
 
-EX = np.mean(X)
-EY = np.mean(Y)
-CovXY = np.cov(X, Y, bias=True)[0, 1]
+if x=1
+ln(3)−1=1.099−1=0.099
 
-print("E[X] =", EX)
-print("E[Y] =", EY)
-print("Cov(X, Y) =", CovXY)
+if x=1.1
+ln(3.1)−1.21=1.131−1.21=−0.079
 
-plt.figure(figsize=(6, 5))
-plt.scatter(X, Y, alpha=0.5, s=10, color='b')
-plt.title('Joint Distribution of X and Y')
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.show()
+the root is between 1.0 and 1.1.
+
+let x=1.05:
+f(1.05)=ln(3.05)−(1.05)2=1.115−1.1025=0.0125(>0)
 
 
+let x=1.06:
+f(1.06)=ln(3.06)−(1.06)2=1.118−1.1236=−0.0056(<0)
 
 
+x≈1.055+(0.0125/0.0125+0.0056)​ * (1.06−1.05)≈1.055+0.69×0.01≈1.0569
 
-
-
-
-
-
-
-
-
+x≈1.057​
