@@ -1,1 +1,32 @@
+Part A
+(1) Average time he leaves the shop
+Shop closes at 9 PM (21:00).
+Last customer arrives before 9 PM, so average last arrival ≈ 9 PM.
+Average service time = 4 minutes per customer.
+He leaves around 9:04 PM.
+
+
+(2)
+Wq​=λE[S^2] / 2(1−ρ)​
+ρ=λE[S],E[S2]=σ2+(E[S])2
+ρ=0.0714×4=0.2856
+E[S2]=1.52+42=2.25+16=18.25
+
+Wq​=0.0714×18.25​ / 2(1−0.2856)
+  =1.42881.302
+  ​=0.911 minutes
+W=Wq​+E[S]=0.911+4=4.911 minutes
+
+
+
+
+
+
+
+
+
+
+
+
+
 
