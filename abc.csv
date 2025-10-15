@@ -1,30 +1,44 @@
-Part A
-(1) Average time he leaves the shop
-Shop closes at 9 PM (21:00).
-Last customer arrives before 9 PM, so average last arrival ≈ 9 PM.
-Average service time = 4 minutes per customer.
-He leaves around 9:04 PM.
+Q2.A)
 
+import pandas as pd
+import statsmodels.api as sm
 
-(2)
-Wq​=λE[S^2] / 2(1−ρ)​
-ρ=λE[S],E[S2]=σ2+(E[S])2
-ρ=0.0714×4=0.2856
-E[S2]=1.52+42=2.25+16=18.25
+mtcars = sm.datasets.get_rdataset("mtcars", "datasets", cache=True).data
+mtcars = mtcars.reset_index().rename(columns={'index': 'model'})
 
-Wq​=0.0714×18.25​ / 2(1−0.2856)
-  =1.42881.302
-  ​=0.911 minutes
-W=Wq​+E[S]=0.911+4=4.911 minutes
+print("Original mtcars dataset:")
+display(mtcars.head())
 
-(3) Proportion of customers getting coffee within 8 minutes
-μ=4, σ=1.5
+selected_cols = mtcars.loc[:, 'mpg':'wt']
+selected_sorted = mtcars[['model'] + list(selected_cols.columns)] \
+                    .sort_values(by=['mpg', 'hp'], ascending=[True, False]) \
+                    .reset_index(drop=True)
 
-P(X<8)=P(Z<(8−4​)/1.5)
-=P(Z<2.67)
+print("\n(i) Selected columns (mpg to wt) and sorted by mpg (asc) and hp (desc):")
+display(selected_sorted)
 
-P(Z<2.67)≈0.9963
+group_size = mtcars.groupby('gear').size().reset_index(name='group_size')
+print("\n(ii.a) Group size per gear:")
+display(group_size)
 
+last6_per_group = mtcars.groupby('gear').apply(lambda x: x.tail(6)).reset_index(drop=True)
+print("\n(ii.b) Last 6 observations per gear group:")
+display(last6_per_group)
+
+qsec_stats = mtcars.groupby('gear')['qsec'].agg(
+    min_qsec='min',
+    max_qsec='max',
+    mean_qsec='mean',
+    sd_qsec='std'
+).reset_index()
+
+print("\n(ii.c) qsec summary statistics by gear:")
+display(qsec_stats)
+
+selected_sorted.to_csv("mtcars_selected_sorted.csv", index=False)
+group_size.to_csv("mtcars_group_size.csv", index=False)
+last6_per_group.to_csv("mtcars_last6_per_group.csv", index=False)
+qsec_stats.to_csv("mtcars_qsec_stats.csv", index=False)
 
 
 
