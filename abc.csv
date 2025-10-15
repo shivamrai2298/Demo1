@@ -1,4 +1,28 @@
-First one is not a code write those as answers
+First one is not a code write those as answers. only 42 lines.
+
+Part B
+Q3)
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 10000
+X = np.random.uniform(0, 1, n)
+Y = X**2
+
+EX = np.mean(X)
+EY = np.mean(Y)
+CovXY = np.cov(X, Y, bias=True)[0, 1]
+
+print("E[X] =", EX)
+print("E[Y] =", EY)
+print("Cov(X, Y) =", CovXY)
+
+plt.figure(figsize=(6, 5))
+plt.scatter(X, Y, alpha=0.5, s=10, color='b')
+plt.title('Joint Distribution of X and Y')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.show()
 
 
 
