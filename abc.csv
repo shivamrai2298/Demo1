@@ -1,45 +1,4 @@
-First one is not a code
-Q2.A)
-
-import pandas as pd
-import statsmodels.api as sm
-
-mtcars = sm.datasets.get_rdataset("mtcars", "datasets", cache=True).data
-mtcars = mtcars.reset_index().rename(columns={'index': 'model'})
-
-print("Original mtcars dataset:")
-display(mtcars.head())
-
-selected_cols = mtcars.loc[:, 'mpg':'wt']
-selected_sorted = mtcars[['model'] + list(selected_cols.columns)] \
-                    .sort_values(by=['mpg', 'hp'], ascending=[True, False]) \
-                    .reset_index(drop=True)
-
-print("\n(i) Selected columns (mpg to wt) and sorted by mpg (asc) and hp (desc):")
-display(selected_sorted)
-
-group_size = mtcars.groupby('gear').size().reset_index(name='group_size')
-print("\n(ii.a) Group size per gear:")
-display(group_size)
-
-last6_per_group = mtcars.groupby('gear').apply(lambda x: x.tail(6)).reset_index(drop=True)
-print("\n(ii.b) Last 6 observations per gear group:")
-display(last6_per_group)
-
-qsec_stats = mtcars.groupby('gear')['qsec'].agg(
-    min_qsec='min',
-    max_qsec='max',
-    mean_qsec='mean',
-    sd_qsec='std'
-).reset_index()
-
-print("\n(ii.c) qsec summary statistics by gear:")
-display(qsec_stats)
-
-selected_sorted.to_csv("mtcars_selected_sorted.csv", index=False)
-group_size.to_csv("mtcars_group_size.csv", index=False)
-last6_per_group.to_csv("mtcars_last6_per_group.csv", index=False)
-qsec_stats.to_csv("mtcars_qsec_stats.csv", index=False)
+First one is not a code write those as answers
 
 
 
