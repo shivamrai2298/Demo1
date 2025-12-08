@@ -1,154 +1,20 @@
-#soc
-#slide 14 example 1
-import numpy as np
-import pandas as pd
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
 
-# Exam scores
-scores = np.array([85, 92, 78, 89, 95, 87, 78, 92, 88, 91,
-                   84, 96, 79, 90, 86, 93, 82, 88, 94, 85])
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
 
-# Step 1: unique values and frequencies
-vals, counts = np.unique(scores, return_counts=True)
-probs = counts / len(scores)
-
-# Step 2: create a dataframe
-edf_df = pd.DataFrame({'Score': vals, 'P(X)': probs})
-edf_df['CDF'] = edf_df['P(X)'].cumsum()
-
-print("Empirical Distribution (Exam Scores):\n")
-print(edf_df)
-
-
-import matplotlib.pyplot as plt
-
-plt.step(edf_df['Score'], edf_df['CDF'], where='post')
-plt.xlabel('Exam Score')
-plt.ylabel('Empirical CDF')
-plt.title('Empirical Distribution of Exam Scores')
-plt.grid(True)
-plt.show()
-
-
-#slide 14 example 1
-import numpy as np
-import pandas as pd
-
-# Exam scores
-scores = np.array([85, 92, 78, 89, 95, 87, 78, 92, 88, 91,
-                   84, 96, 79, 90, 86, 93, 82, 88, 94, 85])
-
-# Step 1: unique values and frequencies
-vals, counts = np.unique(scores, return_counts=True)
-probs = counts / len(scores)
-
-# Step 2: create a dataframe
-edf_df = pd.DataFrame({'Score': vals, 'P(X)': probs})
-edf_df['CDF'] = edf_df['P(X)'].cumsum()
-
-print("Empirical Distribution (Exam Scores):\n")
-print(edf_df)
-
-
-import matplotlib.pyplot as plt
-
-plt.step(edf_df['Score'], edf_df['CDF'], where='post')
-plt.xlabel('Exam Score')
-plt.ylabel('Empirical CDF')
-plt.title('Empirical Distribution of Exam Scores')
-plt.grid(True)
-plt.show()
-
-
-
-#slide 14 example 1
-import numpy as np
-import pandas as pd
-
-# Exam scores
-scores = np.array([85, 92, 78, 89, 95, 87, 78, 92, 88, 91,
-                   84, 96, 79, 90, 86, 93, 82, 88, 94, 85])
-
-# Step 1: unique values and frequencies
-vals, counts = np.unique(scores, return_counts=True)
-probs = counts / len(scores)
-
-# Step 2: create a dataframe
-edf_df = pd.DataFrame({'Score': vals, 'P(X)': probs})
-edf_df['CDF'] = edf_df['P(X)'].cumsum()
-
-print("Empirical Distribution (Exam Scores):\n")
-print(edf_df)
-
-
-import matplotlib.pyplot as plt
-
-plt.step(edf_df['Score'], edf_df['CDF'], where='post')
-plt.xlabel('Exam Score')
-plt.ylabel('Empirical CDF')
-plt.title('Empirical Distribution of Exam Scores')
-plt.grid(True)
-plt.show()
-
-
-
-
-#slide 14 example 1
-import numpy as np
-import pandas as pd
-
-# Exam scores
-scores = np.array([85, 92, 78, 89, 95, 87, 78, 92, 88, 91,
-                   84, 96, 79, 90, 86, 93, 82, 88, 94, 85])
-
-# Step 1: unique values and frequencies
-vals, counts = np.unique(scores, return_counts=True)
-probs = counts / len(scores)
-
-# Step 2: create a dataframe
-edf_df = pd.DataFrame({'Score': vals, 'P(X)': probs})
-edf_df['CDF'] = edf_df['P(X)'].cumsum()
-
-print("Empirical Distribution (Exam Scores):\n")
-print(edf_df)
-
-
-import matplotlib.pyplot as plt
-
-plt.step(edf_df['Score'], edf_df['CDF'], where='post')
-plt.xlabel('Exam Score')
-plt.ylabel('Empirical CDF')
-plt.title('Empirical Distribution of Exam Scores')
-plt.grid(True)
-plt.show()
-
-
-#slide 14 example 1
-import numpy as np
-import pandas as pd
-
-# Exam scores
-scores = np.array([85, 92, 78, 89, 95, 87, 78, 92, 88, 91,
-                   84, 96, 79, 90, 86, 93, 82, 88, 94, 85])
-
-# Step 1: unique values and frequencies
-vals, counts = np.unique(scores, return_counts=True)
-probs = counts / len(scores)
-
-# Step 2: create a dataframe
-edf_df = pd.DataFrame({'Score': vals, 'P(X)': probs})
-edf_df['CDF'] = edf_df['P(X)'].cumsum()
-
-print("Empirical Distribution (Exam Scores):\n")
-print(edf_df)
-
-
-import matplotlib.pyplot as plt
-
-plt.step(edf_df['Score'], edf_df['CDF'], where='post')
-plt.xlabel('Exam Score')
-plt.ylabel('Empirical CDF')
-plt.title('Empirical Distribution of Exam Scores')
-plt.grid(True)
-plt.show()
-
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
 #eoc
+
