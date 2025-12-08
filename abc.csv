@@ -1,35 +1,41 @@
-not a python code:
+import numpy as np
 
-1stv question root
+# Parameters
 
-f(x)=ln(x+2)−x2=0
-ln(x+2)=x2
-x+2=e^(x^2)  e to the power x to the power 2
-e^(x^2)−x−2=0
+OPEN_TIME = 9 * 60       # 9:00 am in minutes
+CLOSE_TIME = 17 * 60     # 5:00 pm in minutes
+MEAN_PRESCRIPTIONS = 32  # expected prescriptions per day
+MEAN_SERVICE = 10        # average service time (minutes)
+SD_SERVICE = 4           # standard deviation of service time
 
+np.random.seed(123)
+# 1. Number of prescriptions today (Poisson distributed)
+#np.random.poisson(lam, size)
+num_prescriptions = np.random.poisson(MEAN_PRESCRIPTIONS)
+print('Number of prescriptions today:', num_prescriptions)
 
-f(x)=ln(x+2)−x2
+# 2. Generate arrival times uniformly between 9 am and 5 pm
+#np.random.uniform(low=0.0, high=1.0, size)
+arrivals = np.sort(np.random.uniform(OPEN_TIME, CLOSE_TIME, num_prescriptions))
+print('arrival times uniformly between 9 am and 5 pm:', '\n', np.array(arrivals))
 
-if x=0
-ln(2)−0=0.693
+# 3. Generate service times (Normal truncated at > 0)
+#np.random.normal(mean, sd, size)
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '\n', np.array(service_times))
 
-if x=1
-ln(3)−1=1.099−1=0.099
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
 
-if x=1.1
-ln(3.1)−1.21=1.131−1.21=−0.079
-
-the root is between 1.0 and 1.1.
-
-let x=1.05:
-f(1.05)=ln(3.05)−(1.05)2=1.115−1.1025=0.0125(>0)
-
-
-let x=1.06:
-f(1.06)=ln(3.06)−(1.06)2=1.118−1.1236=−0.0056(<0)
-
-
-x≈1.055+(0.0125/0.0125+0.0056)​ * (1.06−1.05)
-≈1.055+0.69×0.01≈1.0569
-
-x≈1.057​
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '\n', 'finish time:', np.array(finish_times), '\n', 'current time:', current_time)
