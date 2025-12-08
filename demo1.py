@@ -1,3 +1,5 @@
+#soc
+
 import numpy as np
 
 # Parameters
@@ -39,3 +41,226 @@ for i in range(num_prescriptions):
         current_time = finish  # update pharmacist's free time
     
 print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+
+
+
+import numpy as np
+
+# Parameters
+
+OPEN_TIME = 9 * 60       # 9:00 am in minutes
+CLOSE_TIME = 17 * 60     # 5:00 pm in minutes
+MEAN_PRESCRIPTIONS = 32  # expected prescriptions per day
+MEAN_SERVICE = 10        # average service time (minutes)
+SD_SERVICE = 4           # standard deviation of service time
+
+np.random.seed(123)
+# 1. Number of prescriptions today (Poisson distributed)
+#np.random.poisson(lam, size)
+num_prescriptions = np.random.poisson(MEAN_PRESCRIPTIONS)
+print('Number of prescriptions today:', num_prescriptions)
+
+# 2. Generate arrival times uniformly between 9 am and 5 pm
+#np.random.uniform(low=0.0, high=1.0, size)
+arrivals = np.sort(np.random.uniform(OPEN_TIME, CLOSE_TIME, num_prescriptions))
+print('arrival times uniformly between 9 am and 5 pm:', '', np.array(arrivals))
+
+# 3. Generate service times (Normal truncated at > 0)
+#np.random.normal(mean, sd, size)
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+
+
+
+
+import numpy as np
+
+# Parameters
+
+OPEN_TIME = 9 * 60       # 9:00 am in minutes
+CLOSE_TIME = 17 * 60     # 5:00 pm in minutes
+MEAN_PRESCRIPTIONS = 32  # expected prescriptions per day
+MEAN_SERVICE = 10        # average service time (minutes)
+SD_SERVICE = 4           # standard deviation of service time
+
+np.random.seed(123)
+# 1. Number of prescriptions today (Poisson distributed)
+#np.random.poisson(lam, size)
+num_prescriptions = np.random.poisson(MEAN_PRESCRIPTIONS)
+print('Number of prescriptions today:', num_prescriptions)
+
+# 2. Generate arrival times uniformly between 9 am and 5 pm
+#np.random.uniform(low=0.0, high=1.0, size)
+arrivals = np.sort(np.random.uniform(OPEN_TIME, CLOSE_TIME, num_prescriptions))
+print('arrival times uniformly between 9 am and 5 pm:', '', np.array(arrivals))
+
+# 3. Generate service times (Normal truncated at > 0)
+#np.random.normal(mean, sd, size)
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+
+
+
+import numpy as np
+
+# Parameters
+
+OPEN_TIME = 9 * 60       # 9:00 am in minutes
+CLOSE_TIME = 17 * 60     # 5:00 pm in minutes
+MEAN_PRESCRIPTIONS = 32  # expected prescriptions per day
+MEAN_SERVICE = 10        # average service time (minutes)
+SD_SERVICE = 4           # standard deviation of service time
+
+np.random.seed(123)
+# 1. Number of prescriptions today (Poisson distributed)
+#np.random.poisson(lam, size)
+num_prescriptions = np.random.poisson(MEAN_PRESCRIPTIONS)
+print('Number of prescriptions today:', num_prescriptions)
+
+# 2. Generate arrival times uniformly between 9 am and 5 pm
+#np.random.uniform(low=0.0, high=1.0, size)
+arrivals = np.sort(np.random.uniform(OPEN_TIME, CLOSE_TIME, num_prescriptions))
+print('arrival times uniformly between 9 am and 5 pm:', '', np.array(arrivals))
+
+# 3. Generate service times (Normal truncated at > 0)
+#np.random.normal(mean, sd, size)
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+
+
+
+import numpy as np
+
+# Parameters
+
+OPEN_TIME = 9 * 60       # 9:00 am in minutes
+CLOSE_TIME = 17 * 60     # 5:00 pm in minutes
+MEAN_PRESCRIPTIONS = 32  # expected prescriptions per day
+MEAN_SERVICE = 10        # average service time (minutes)
+SD_SERVICE = 4           # standard deviation of service time
+
+np.random.seed(123)
+# 1. Number of prescriptions today (Poisson distributed)
+#np.random.poisson(lam, size)
+num_prescriptions = np.random.poisson(MEAN_PRESCRIPTIONS)
+print('Number of prescriptions today:', num_prescriptions)
+
+# 2. Generate arrival times uniformly between 9 am and 5 pm
+#np.random.uniform(low=0.0, high=1.0, size)
+arrivals = np.sort(np.random.uniform(OPEN_TIME, CLOSE_TIME, num_prescriptions))
+print('arrival times uniformly between 9 am and 5 pm:', '', np.array(arrivals))
+
+# 3. Generate service times (Normal truncated at > 0)
+#np.random.normal(mean, sd, size)
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+
+
+
+import numpy as np
+
+# Parameters
+
+OPEN_TIME = 9 * 60       # 9:00 am in minutes
+CLOSE_TIME = 17 * 60     # 5:00 pm in minutes
+MEAN_PRESCRIPTIONS = 32  # expected prescriptions per day
+MEAN_SERVICE = 10        # average service time (minutes)
+SD_SERVICE = 4           # standard deviation of service time
+
+np.random.seed(123)
+# 1. Number of prescriptions today (Poisson distributed)
+#np.random.poisson(lam, size)
+num_prescriptions = np.random.poisson(MEAN_PRESCRIPTIONS)
+print('Number of prescriptions today:', num_prescriptions)
+
+# 2. Generate arrival times uniformly between 9 am and 5 pm
+#np.random.uniform(low=0.0, high=1.0, size)
+arrivals = np.sort(np.random.uniform(OPEN_TIME, CLOSE_TIME, num_prescriptions))
+print('arrival times uniformly between 9 am and 5 pm:', '', np.array(arrivals))
+
+# 3. Generate service times (Normal truncated at > 0)
+#np.random.normal(mean, sd, size)
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+
+#eoc
