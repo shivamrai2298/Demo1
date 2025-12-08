@@ -18,3 +18,109 @@ for i in range(num_prescriptions):
 print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
 #eoc
 
+
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+#eoc
+
+
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+#eoc
+
+
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+#eoc
+
+
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+#eoc
+
+
+#.maximum(array, value) neded bcuz service time cannot be negative and normal distrib sometimes gives negative values
+service_times = np.maximum(np.random.normal(MEAN_SERVICE, SD_SERVICE, num_prescriptions), 0.1)
+print('service times :', '', np.array(service_times))
+
+start_times = []
+finish_times = []
+current_time = OPEN_TIME
+
+for i in range(num_prescriptions):
+        # Start when pharmacist is free or when prescription arrives
+        start = max(arrivals[i], current_time)
+        finish = start + service_times[i]
+        
+        start_times.append(start)
+        finish_times.append(finish)
+        current_time = finish  # update pharmacist's free time
+    
+print('start time:', np.array(start_times), '', 'finish time:', np.array(finish_times), '', 'current time:', current_time)
+#eoc
+
+
