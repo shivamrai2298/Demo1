@@ -1,90 +1,34 @@
 #soc
-#Part B Q.1 i
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+#Part B Question2
 
-
-x0 = 7
-m = 10**5       # 100000
-a = 5
-n = 10_000      
-
-
-x = np.zeros(n)
-x[0] = x0
-
-# MCG recursion
-for i in range(1, n):
-    x[i] = (a * x[i-1]) % m
-
-u = x / m
-
-# Display first 10 random numbers
-print("First 10 generated Uniform(0,1) numbers:")
-print(u[:10])
-
-
-# Histogram to check if it looks Uniform(0,1)
-plt.figure(figsize=(8,5))
-plt.hist(u, bins=30, density=True, edgecolor="black", alpha=0.7)
-plt.title("Histogram of MCG-Generated Random Numbers")
-plt.xlabel("Value")
-plt.ylabel("Density")
-plt.grid(True, linestyle="--", alpha=0.4)
-plt.show()
-
-
-
-
-
-
-#PartB Q1. ii
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.cluster import KMeans
 
-df = pd.read_csv("CarData_for_set_1.csv")
+x = np.array([4.12, 4.25, 3.98, 4.30, 4.18, 4.05, 4.22, 4.10, 4.28, 4.15])
 
-# Show top 5 rows
-print("Dataset preview:")
-print(df.head())
+# a) Sample mean
+sample_mean = np.mean(x)
+print("Sample Mean:", sample_mean)
 
-# Select required features
-X = df[["mpg", "hp"]]
+# ---- Bootstrap (Bias of mean) ----
+np.random.seed(456)
+B = 1000
+n = len(x)
 
+boot_means = np.zeros(B)
 
-# Perform K-Means Clustering
-kmeans = KMeans(n_clusters=2, random_state=42)
-df["cluster"] = kmeans.fit_predict(X)
+for b in range(B):
+    boot_sample = np.random.choice(x, size=n, replace=True)
+    boot_means[b] = np.mean(boot_sample)
 
-print("\nCluster Centers (mpg, hp):")
-print(kmeans.cluster_centers_)
+# Bootstrap estimate of bias
+bias = np.mean(boot_means) - sample_mean
 
+print("Bootstrap Mean of Means:", np.mean(boot_means))
+print("Bootstrap Bias Estimate:", bias)
 
-# Plot clusters
-plt.figure(figsize=(8,6))
-sns.scatterplot(
-    data=df, x="mpg", y="hp",
-    hue="cluster", palette="Set1", s=120
-)
-plt.title("K-Means Clustering on Car Data (mpg vs hp)")
-plt.xlabel("Miles per Gallon (mpg)")
-plt.ylabel("Horsepower (hp)")
-plt.grid(True, linestyle="--", alpha=0.5)
-plt.show()
+# b) Bootstrap Standard Error of the sample mean
+bootstrap_se = np.std(boot_means, ddof=1)
+print("Bootstrap SE of Sample Mean:", bootstrap_se)
 
-# Interpretation 
-print("\nINTERPRETATION:")
-print("""
-Cluster 0 → Likely high-mpg, low-hp cars 
-(Fuel efficient, less powerful)
-
-Cluster 1 → Likely low-mpg, high-hp cars
-(High power, fuel-inefficient)
-""")
 
 #eoc
-
-
