@@ -1,5 +1,5 @@
 #soc
-#Part B Q.1
+#Part B Q.1 i
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -39,7 +39,7 @@ plt.show()
 
 
 
-#PartB Q2
+#PartB Q1. ii
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -86,4 +86,5 @@ Cluster 1 → Likely low-mpg, high-hp cars
 """)
 
 #eoc
+
 
